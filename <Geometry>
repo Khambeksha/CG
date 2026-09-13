@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cmath>
+
+class Shape {
+public:
+    virtual double calculateArea() = 0;
+    virtual double calculatePerimeter() = 0;
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+.public:
+    Circle(double r) : radius(r) {}
+    double calculateArea() override { return M_PI * radius * radius; }
+    double calculatePerimeter() override { return 2 * M_PI * radius; }
+};
+
+class Rectangle : public Shape {
+private:
+    double length, width;
+public:
+    Rectangle(double l, double w) : length(l), width(w) {}
+    double calculateArea() override { return length * width; }
+    double calculatePerimeter() override { return 2 * (length + width); }
+};
+
+int main() {
+    Circle c(5.0);
+Rectangle r(4.0, 6.0);
+
+    std::cout << "Circle Area: " << c.calculateArea() << "\n";
+    std::cout << "Rectangle Area: " << r.calculateArea() << "\n";
+    return 0;
+}
